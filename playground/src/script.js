@@ -11,19 +11,33 @@ const scene = new THREE.Scene();
 /**
  * Objects
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-const mesh = new THREE.Mesh(geometry, material);
-mesh.position.set(0.7, 1, -1.2);
-// mesh.position.normalize();
-mesh.scale.set(1, 1.7, 0.3);
-mesh.rotation.reorder('YXZ')
-mesh.rotation.y = ((1 / 3) * 22) / 7;
-mesh.rotation.x = ((1 / 3) * 22) / 7;
 
-console.log("length", mesh.position.length());
-scene.add(mesh);
+const group = new THREE.Group()
 
+
+scene.add(group)
+
+const cube1 =  new THREE.Mesh(
+  new THREE.BoxGeometry(1,1,1)
+  ,
+  new THREE.MeshBasicMaterial({color:0xff0000})
+)
+group.add(cube1)
+const cube2 =  new THREE.Mesh(
+  new THREE.BoxGeometry(1,1,1)
+  ,
+  new THREE.MeshBasicMaterial({color:0xee000})
+)
+group.add(cube2)
+cube2.position.x = -2
+
+const cube3 =  new THREE.Mesh(
+  new THREE.BoxGeometry(1,1,1)
+  ,
+  new THREE.MeshBasicMaterial({color:0x2e050})
+)
+group.add(cube3)
+cube3.position.x = 2
 // axes helper
 
 const axesHelper = new THREE.AxesHelper();
@@ -40,12 +54,11 @@ const sizes = {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.z = 2;
+camera.position.z = 3;
 
-camera.position.x = 1;
 scene.add(camera);
 
-camera.lookAt(mesh.position)
+
 /**
  * Renderer
  */
