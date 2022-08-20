@@ -10,7 +10,7 @@ const scene = new THREE.Scene();
 
 /**
  * Objects
- */
+ */ 
 
 const group = new THREE.Group()
 
